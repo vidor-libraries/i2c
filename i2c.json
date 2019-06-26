@@ -1,0 +1,60 @@
+{
+  "sc":{
+    "name":"i2c",
+    "include":"i2c.h",
+    "uid":"I2C_UID",
+    "rpc":"i2cRpc",
+    "ver":"I2C_VER",
+    "loop":""
+  },
+  "module":{
+    "name":"o_i2c_master",
+    "version":"1.0",
+    "className":"VidorTwoWire",
+    "instanceName":"I2CMaster",
+    "description":"I2C Master",
+    "author":"",
+    "parameters":[]
+  },
+  "interfaces":[
+    {
+      "name":"i2c",
+      "type":"output",
+      "mates":["pins"],
+      "visibility":"1",
+      "signals":[
+        {
+          "name":"sda_o",
+          "name_oe":"sda_en",
+          "name_in":"sda_i",
+          "bits":"1",
+          "direction":"bidir",
+          "fid":"I2C_PIN_FNC_SDA"
+        },
+        {
+          "name":"scl_o",
+          "name_oe":"scl_en",
+          "name_in":"scl_i",
+          "bits":"1",
+          "direction":"bidir",
+          "fid":"I2C_PIN_FNC_SCL"
+        }
+      ]
+    }
+  ],
+  "hw":[
+    {
+      "interface":"avalon_slave",
+      "name":"avalon_slave",
+      "parameters":[
+        {"signal":"address", "name":"SPAN", "value":"3"},
+        {"signal":"read_data", "name":"BIT_WIDTH", "value":"32"},
+        {"signal":"write_data", "name":"BIT_WIDTH", "value":"32"}
+      ]
+    },
+    {
+      "interface":"i2c",
+      "name":"i2c"
+    }
+  ]
+}
